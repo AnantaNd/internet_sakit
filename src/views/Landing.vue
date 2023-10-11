@@ -15,32 +15,31 @@
               <h1 class="title font-bold text-white">
                 {{ title }}
               </h1>
-              <h2 class="subtitle font-medium text-lg italic text-white mb-2">
+              <h2 class="subtitle font-bold text-xl italic text-white mb-2">
                 {{ subtitle }}
               </h2>
               <p
-                class="UU font-semibold text-sm text-white"
-                style="margin-bottom: 5px"
+                class="UU font-bold text-white pb-2"
               >
                 {{ undangUndangPertama }}
                 <br />
-                <span class="subUU italic font-light text-xs">{{
+                <span class="subUU italic font-semibold text-xs">{{
                   subUndangUndangPertama
                 }}</span>
               </p>
               <p
-                class="UU font-semibold text-sm text-white"
+                class="UU font-bold text-white"
                 style="margin-bottom: 5px"
               >
                 {{ undangUndangKedua }} <br />
-                <span class="subUU italic font-light text-xs">{{
+                <span class="subUU italic font-semibold text-xs">{{
                   subUndangUndangKedua
                 }}</span>
               </p>
               <h1 class="tentang text-sm font-semibold text-white mt-3 sm:mt-1">
                 {{ tentang }}
               </h1>
-              <h1 class="about text-sm font-semibold text-white">
+              <h1 class="about text-xs italic font-semibold text-white">
                 Sorry, access to this website has been denied by The Government
                 of Indonesia due to negative content as it violates Indonesia
                 Law
@@ -203,20 +202,20 @@ export default {
 </script>
 <style scoped>
 /* dwsktop */
-@media screen and (min-width: 1200px) and (max-width: 1600px) {
+@media screen and (min-width: 1200px) and (max-width: 1680px) {
   .leading-relaxed {
     margin: 1rem 0;
     padding: 1rem 0.3rem;
   }
   .wrapper {
     margin: 2rem 0;
-    line-height: 2;
+    /* line-height: 2; */
   }
   .title {
     font-size: 50px;
     word-spacing: 2px;
   }
-  .subUU {
+  .subUU, .about {
     margin: 1rem 0;
     font-size: 15px;
   }
@@ -224,8 +223,20 @@ export default {
 /* mobile */
 @media only screen and (min-width: 375px) and (max-width: 767px) {
   .title {
-    font-size: 28px;
+    font-size: 22px;
   }
+	.subtitle{
+		font-size: 18px;
+	}
+	.UU{
+		font-size: 13px;
+	}
+	.subUU{
+		font-size: 14px;
+	}
+	.about{
+		font-size: 14px;
+	}
   .shapeTpRght {
     background-color: white;
     width: 360px;
