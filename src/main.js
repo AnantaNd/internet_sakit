@@ -33,9 +33,10 @@ import Landing from "@/views/Landing.vue";
 
 const routes = [
   {
-    path: "/admin",
+    path: "/",
     redirect: "/admin/dashboard",
     component: Admin,
+    meta: { authAdmin: true },
     children: [
       {
         path: "/admin/dashboard",
@@ -48,16 +49,16 @@ const routes = [
     ],
   },
   {
-    path: "/auth",
-    redirect: "/auth/login",
+    path: "/login",
+    meta: { authAdmin: false },
     component: Auth,
     children: [
       {
-        path: "/auth/login",
+        path: "/login",
         component: Login,
       },
       {
-        path: "/auth/register",
+        path: "/register",
         component: Register,
       },
     ],
@@ -66,16 +67,23 @@ const routes = [
     path: "/internet-positive",
     component: Landing,
   },
-  {
-    path: "/",
-    component: Admin,
-  },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.authAdmin);
+  const isAuthenticated = localStorage.getItem('dataUser');
+
+  if (requiresAuth && !isAuthenticated) {
+    next('/internet-positive');
+  } else {
+    next();
+  }
 });
 
 createApp(App).use(router).mount("#app");

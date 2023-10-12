@@ -13,31 +13,43 @@
           <div class="leading-relaxed">
             <div class="wrapper">
               <h1 class="title font-bold text-white">
-                {{ title }}
+                {{ title ? title : "SITUS DIBLOKIR" }}
               </h1>
               <h2 class="subtitle font-bold text-xl italic text-white mb-2">
-                {{ subtitle }}
+                {{ subtitle ? subtitle : "WEBSITE BLOCKED" }}
               </h2>
-              <p
-                class="UU font-bold text-white pb-2"
-              >
-                {{ undangUndangPertama }}
+              <p class="UU font-bold text-white pb-2">
+                {{
+                  undangUndangPertama
+                    ? undangUndangPertama
+                    : "UNDANG-UNDANG NOMOR 19 TAHUN 2016 PASAL 40 (2a) dan (2b) TENTANG INFORMASI DAN TRANSAKSI ELEKTRONIK"
+                }}
                 <br />
-                <span class="subUU italic font-semibold text-xs">{{
+                <span class="subUU italic font-normal text-xs">{{
                   subUndangUndangPertama
+                    ? subUndangUndangPertama
+                    : "Indonesia Law No.19 Year 2016 Article 40 (2a) and (2b) regarding Information and Electonic Transaction"
                 }}</span>
               </p>
-              <p
-                class="UU font-bold text-white"
-                style="margin-bottom: 5px"
-              >
-                {{ undangUndangKedua }} <br />
-                <span class="subUU italic font-semibold text-xs">{{
+              <p class="UU font-bold text-white" style="margin-bottom: 5px">
+                {{
+                  undangUndangKedua
+                    ? undangUndangKedua
+                    : "PERATURAN MENTERI KOMUNIKASI DAN INFORMATIKA NO.5 TAHUN 2020 TENTANG PENYELENGGARA SISTEM ELEKTRONIK LINGKUP PRIVAT"
+                }}
+                <br />
+                <span class="subUU italic font-normal text-xs">{{
                   subUndangUndangKedua
+                    ? subUndangUndangKedua
+                    : "Regulation of The Minister of Communications and Informatics of The Republic of Indonesia Number 5 of 2020 on Private Electronic System Operators"
                 }}</span>
               </p>
               <h1 class="tentang text-sm font-semibold text-white mt-3 sm:mt-1">
-                {{ tentang }}
+                {{
+                  tentang
+                    ? tentang
+                    : "MAAF, AKSES KE SITUS INI DIBLOKIR OLEH PEMERINTAH INDONESIA KARENA MENGANDUNG KONTEN NEGATIF YANG MELANGGAR PERATURAN PERUNDANGAN DI INDONESIA"
+                }}
               </h1>
               <h1 class="about text-xs italic font-semibold text-white">
                 Sorry, access to this website has been denied by The Government
@@ -215,7 +227,8 @@ export default {
     font-size: 50px;
     word-spacing: 2px;
   }
-  .subUU, .about {
+  .subUU,
+  .about {
     margin: 1rem 0;
     font-size: 15px;
   }
@@ -225,18 +238,18 @@ export default {
   .title {
     font-size: 22px;
   }
-	.subtitle{
-		font-size: 18px;
-	}
-	.UU{
-		font-size: 13px;
-	}
-	.subUU{
-		font-size: 14px;
-	}
-	.about{
-		font-size: 14px;
-	}
+  .subtitle {
+    font-size: 18px;
+  }
+  .UU {
+    font-size: 13px;
+  }
+  .subUU {
+    font-size: 14px;
+  }
+  .about {
+    font-size: 14px;
+  }
   .shapeTpRght {
     background-color: white;
     width: 360px;
