@@ -77,7 +77,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.authAdmin);
-  const isAuthenticated = localStorage.getItem('dataUser');
+  const isAuthenticated = localStorage.getItem('authToken');
 
   if (requiresAuth && !isAuthenticated) {
     next('/internet-positive');

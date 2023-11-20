@@ -9,6 +9,7 @@
         :undangUndangKedua="undangUndangKedua"
         :subUndangUndangKedua="subUndangUndangKedua"
         :tentang="tentang"
+        :about="about"
         @update:title="updateField('title', $event)"
         @update:subtitle="updateField('subtitle', $event)"
         @update:undangUndangPertama="updateField('undangUndangPertama', $event)"
@@ -20,6 +21,7 @@
           updateField('subUndangUndangKedua', $event)
         "
         @update:tentang="updateField('tentang', $event)"
+        @update:about="updateField('about', $event)"
         @submitForm="submitForm"
         @clearForm="clearForm"
       />
@@ -54,6 +56,7 @@ export default {
       undangUndangKedua: "",
       subUndangUndangKedua: "",
       tentang: "",
+      about: "",
       cartSettings: [],
       editItemId: null,
     };
@@ -75,15 +78,15 @@ export default {
           undangUndangKedua: this.undangUndangKedua,
           subUndangUndangKedua: this.subUndangUndangKedua,
           tentang: this.tentang,
+          about: this.about,
         };
 
-        const endpoint = this.editItemId
-          ? `situs/edit/${this.editItemId}`
-          : "situs/add";
+        const endpoint = this.editItemId ? `data/${this.editItemId}` : "data";
         const response = await api[this.editItemId ? "put" : "post"](
           endpoint,
           formData
         );
+        console.log(endpoint);
 
         console.log("Form submitted successfully:", response.data);
         this.clearForm();
@@ -95,21 +98,22 @@ export default {
     },
     getStatus() {
       api
-        .get("situs/getAll")
+        .get("data")
         .then((response) => {
-          this.cartSettings = response.data.data;
+          this.cartSettings = response.data;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
         });
     },
     deleteData(itemId) {
+      console.log(itemId);
       api
-        .delete(`situs/delete/${itemId}`)
+        .delete(`data/${itemId}`)
         .then((response) => {
           console.log("Data berhasil dihapus:", response.data);
           this.cartSettings = this.cartSettings.filter(
-            (item) => item._id !== itemId
+            (item) => item.id !== itemId
           );
         })
         .catch((error) => {
@@ -124,7 +128,9 @@ export default {
       this.undangUndangKedua = item.undangUndangKedua || "";
       this.subUndangUndangKedua = item.subUndangUndangKedua || "";
       this.tentang = item.tentang || "";
-      this.editItemId = item._id;
+      this.about = item.about || "";
+      this.editItemId = item.id;
+      console.log(this.editItemId);
     },
     clearForm() {
       this.title = "";
@@ -134,6 +140,7 @@ export default {
       this.undangUndangKedua = "";
       this.subUndangUndangKedua = "";
       this.tentang = "";
+      this.about = "";
     },
   },
 };

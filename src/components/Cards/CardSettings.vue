@@ -141,8 +141,32 @@
             </div>
           </div>
         </div>
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <textarea
+                :value="about"
+                @input="$emit('update:about', $event.target.value)"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Masukkan tentang information"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
         <button
           @click="submitForm"
+          :disabled="
+            title &&
+            subtitle &&
+            undangUndangPertama &&
+            undangUndangKedua &&
+            subUndangUndangKedua &&
+            subUndangUndangPertama &&
+            tentang
+              ? false
+              : true
+          "
           type="button"
           class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
         >
@@ -163,6 +187,7 @@ export default {
     "undangUndangKedua",
     "subUndangUndangKedua",
     "tentang",
+    "about",
   ],
   methods: {
     submitForm() {
@@ -174,6 +199,7 @@ export default {
         undangUndangKedua: this.undangUndangKedua,
         subUndangUndangKedua: this.subUndangUndangKedua,
         tentang: this.tentang,
+        about: this.about,
       });
     },
     clearForm() {

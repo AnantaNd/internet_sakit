@@ -20,7 +20,7 @@
     </a>
     <div
       ref="popoverDropdownRef"
-      class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
+      class="bg-white text-base z-50 float-left py-2 px-3 list-none text-left rounded shadow-lg min-w-48"
       v-bind:class="{
         hidden: !dropdownPopoverShow,
         block: dropdownPopoverShow,
@@ -44,7 +44,7 @@
       >
         Something else here
       </a>
-      <div class="h-0 my-2 border border-solid border-blueGray-100" />
+      <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
       <button
         @click="signOut"
         class="bg-emerald-500 text-sm py-2 px-4 font-normal block w-full rounded whitespace-nowrap bg-transparent text-white active:bg-emerald-600"
@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     signOut() {
+      localStorage.removeItem("authToken");
       this.$router.push("/auth/login");
     },
     toggleDropdown: function (event) {

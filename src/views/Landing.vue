@@ -13,48 +13,30 @@
           <div class="leading-relaxed">
             <div class="wrapper">
               <h1 class="title font-bold text-white">
-                {{ title ? title : "SITUS DIBLOKIR" }}
+                {{ title ? title : "data masih kosong" }}
               </h1>
               <h2 class="subtitle font-bold text-xl italic text-white mb-2">
-                {{ subtitle ? subtitle : "WEBSITE BLOCKED" }}
+                {{ subtitle }}
               </h2>
               <p class="UU font-bold text-white pb-2">
-                {{
-                  undangUndangPertama
-                    ? undangUndangPertama
-                    : "UNDANG-UNDANG NOMOR 19 TAHUN 2016 PASAL 40 (2a) dan (2b) TENTANG INFORMASI DAN TRANSAKSI ELEKTRONIK"
-                }}
+                {{ undangUndangPertama }}
                 <br />
                 <span class="subUU italic font-normal text-xs">{{
                   subUndangUndangPertama
-                    ? subUndangUndangPertama
-                    : "Indonesia Law No.19 Year 2016 Article 40 (2a) and (2b) regarding Information and Electonic Transaction"
                 }}</span>
               </p>
               <p class="UU font-bold text-white" style="margin-bottom: 5px">
-                {{
-                  undangUndangKedua
-                    ? undangUndangKedua
-                    : "PERATURAN MENTERI KOMUNIKASI DAN INFORMATIKA NO.5 TAHUN 2020 TENTANG PENYELENGGARA SISTEM ELEKTRONIK LINGKUP PRIVAT"
-                }}
+                {{ undangUndangKedua }}
                 <br />
                 <span class="subUU italic font-normal text-xs">{{
                   subUndangUndangKedua
-                    ? subUndangUndangKedua
-                    : "Regulation of The Minister of Communications and Informatics of The Republic of Indonesia Number 5 of 2020 on Private Electronic System Operators"
                 }}</span>
               </p>
               <h1 class="tentang text-sm font-semibold text-white mt-3 sm:mt-1">
-                {{
-                  tentang
-                    ? tentang
-                    : "MAAF, AKSES KE SITUS INI DIBLOKIR OLEH PEMERINTAH INDONESIA KARENA MENGANDUNG KONTEN NEGATIF YANG MELANGGAR PERATURAN PERUNDANGAN DI INDONESIA"
-                }}
+                {{ tentang }}
               </h1>
               <h1 class="about text-xs italic font-semibold text-white">
-                Sorry, access to this website has been denied by The Government
-                of Indonesia due to negative content as it violates Indonesia
-                Law
+                {{ about }}
               </h1>
             </div>
           </div>
@@ -180,6 +162,7 @@ export default {
       undangUndangKedua: "",
       subUndangUndangKedua: "",
       tentang: "",
+      about: "",
       cartSettings: [],
     };
   },
@@ -193,9 +176,9 @@ export default {
   methods: {
     getStatus() {
       api
-        .get("situs/getAll")
+        .get("data")
         .then((response) => {
-          this.cartSettings = response.data.data[0];
+          this.cartSettings = response.data[0];
           this.title = this.cartSettings.title;
           this.subtitle = this.cartSettings.subtitle;
           this.undangUndangPertama = this.cartSettings.undangUndangPertama;
@@ -204,6 +187,7 @@ export default {
           this.undangUndangKedua = this.cartSettings.undangUndangKedua;
           this.subUndangUndangKedua = this.cartSettings.subUndangUndangKedua;
           this.tentang = this.cartSettings.tentang;
+          this.about = this.cartSettings.about;
         })
         .catch((error) => {
           console.error("Error fetching data:", error);

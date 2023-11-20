@@ -45,7 +45,7 @@
                   placeholder="Password"
                 />
               </div>
-              <div>
+              <!-- <div>
                 <label class="inline-flex items-center cursor-pointer">
                   <input
                     id="customCheckLogin"
@@ -56,13 +56,13 @@
                     Remember me
                   </span>
                 </label>
-              </div>
+              </div> -->
 
               <div class="text-center mt-6">
                 <button
                   class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                   type="button"
-                  @click="subMit()"
+                  @click="login()"
                 >
                   Sign In
                 </button>
@@ -114,6 +114,31 @@ export default {
         alert("Error logging in. Please try again later.");
       }
     },
+    async login() {
+      const credential = {
+        email: this.email,
+        password: this.password,
+      };
+      await api
+        .post("login", credential)
+        .then((res) => {
+          const token = res.data.accessToken;
+          localStorage.setItem("authToken", token);
+          alert("Login successful!");
+          this.$router.push("/");
+        })
+        .catch((err) => {
+          console.err(err, "login gagal");
+          alert(err);
+        });
+    },
   },
 };
+// node
+// email: "admin@gmail.com";
+// password: "123";
+
+// db.json
+// "email": "test@gmail.com",
+// "password": "test123",
 </script>

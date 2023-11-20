@@ -91,13 +91,25 @@
               Tentang
             </th>
             <th
+              class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
+              :class="[
+                color === 'light'
+                  ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+                  : 'bg-emerald-800 text-emerald-300 border-emerald-700',
+              ]"
+            >
+              About
+            </th>
+            <th
               class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               :class="[
                 color === 'light'
                   ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
                   : 'bg-emerald-800 text-emerald-300 border-emerald-700',
               ]"
-            ></th>
+            >
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -144,19 +156,26 @@
               </div>
             </td>
             <td
-              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right"
+              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+            >
+              <div class="flex items-center">
+                {{ truncateText(item.about, 30) }}
+              </div>
+            </td>
+            <td
+              class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right items-center"
             >
               <button
                 class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 @click="editData(item)"
               >
-                <i class="fas fa-pen"></i> Edit
+                <i class="fas fa-pen"></i>
               </button>
               <button
                 class="bg-red-600 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                @click="deleteData(item._id)"
+                @click="deleteData(item.id)"
               >
-                <i class="fas fa-trash"></i> Delete
+                <i class="fas fa-trash"></i>
               </button>
             </td>
             <td
