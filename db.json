@@ -14,9 +14,16 @@
   ],
   "users": [
     {
-      "email": "test@gmail.com",
-      "password": "$2a$10$8uxWWQrKm7bLQiLp8keWp.upx8aVGYbCGw3U6h9zkx0eP039ALZKS",
+      "email": "admin@gmail.com",
+      "password": "$2a$10$18yhJDQ0KCmuyTOOQUd05.2K2mH3vtGwLJGFAwvES02zorZluGYcu",
+      "username": "test",
       "id": 1
+    },
+    {
+      "email": "fygugof@mailinator.com",
+      "password": "$2a$10$N03nXvZOgSjvNZi0R8z2VeZj7D6iLy1lny0Fo4XnOMACXP2vWvHuW",
+      "username": "finery",
+      "id": 2
     }
   ]
 }

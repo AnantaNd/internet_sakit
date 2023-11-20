@@ -72,7 +72,7 @@
         </div>
         <div class="flex flex-wrap mt-6 relative">
           <div class="w-2/2 text-right">
-            <router-link to="/auth/register" class="text-blueGray-200">
+            <router-link to="/register" class="text-blueGray-200">
               <small>Create new account</small>
             </router-link>
           </div>
@@ -96,24 +96,24 @@ export default {
     };
   },
   methods: {
-    async subMit() {
-      try {
-        const response = await api.post("user/login", {
-          email: this.email,
-          password: this.password,
-        });
-        if (response.data.sukses) {
-          localStorage.setItem("dataUser", JSON.stringify(response.data.data));
-          this.$router.push("/");
-          alert("Login successful!");
-        } else {
-          alert("Invalid email or password.");
-        }
-      } catch (error) {
-        console.error("Error logging in:", error);
-        alert("Error logging in. Please try again later.");
-      }
-    },
+    // async subMit() {
+    //   try {
+    //     const response = await api.post("user/login", {
+    //       email: this.email,
+    //       password: this.password,
+    //     });
+    //     if (response.data.sukses) {
+    //       localStorage.setItem("dataUser", JSON.stringify(response.data.data));
+    //       this.$router.push("/");
+    //       alert("Login successful!");
+    //     } else {
+    //       alert("Invalid email or password.");
+    //     }
+    //   } catch (error) {
+    //     console.error("Error logging in:", error);
+    //     alert("Error logging in. Please try again later.");
+    //   }
+    // },
     async login() {
       const credential = {
         email: this.email,
