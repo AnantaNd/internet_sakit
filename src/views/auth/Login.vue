@@ -139,6 +139,6 @@ export default {
 // password: "123";
 
 // db.json
-// "email": "test@gmail.com",
-// "password": "test123",
+// "email": "admin@gmail.com",
+// "password": "123123",
 </script>

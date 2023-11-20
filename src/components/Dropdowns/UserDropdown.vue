@@ -69,8 +69,11 @@ export default {
   },
   methods: {
     signOut() {
-      localStorage.removeItem("authToken");
-      this.$router.push("/auth/login");
+      setTimeout(() => {
+        localStorage.removeItem("authToken");
+        alert("logout berhasil");
+        this.$router.push("/login");
+      }, 1000);
     },
     toggleDropdown: function (event) {
       event.preventDefault();

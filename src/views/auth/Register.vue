@@ -105,6 +105,13 @@
             </form>
           </div>
         </div>
+        <div class="flex flex-wrap mt-6 relative">
+          <div class="w-2/2 text-right">
+            <router-link to="/login" class="text-blueGray-200">
+              <small>Sign In</small>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
