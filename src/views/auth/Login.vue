@@ -134,10 +134,6 @@ export default {
     },
   },
 };
-// node
-// email: "admin@gmail.com";
-// password: "123";
-
 // db.json
 // "email": "admin@gmail.com",
 // "password": "123123",
